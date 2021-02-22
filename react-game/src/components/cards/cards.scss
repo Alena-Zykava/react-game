@@ -1,0 +1,15 @@
+.cards {
+    flex-wrap: wrap;
+
+}
+
+.card {
+    height: 200px;
+    width: 150px;
+    margin: 15px;
+    border-radius: 15px;
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
