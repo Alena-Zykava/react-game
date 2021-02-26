@@ -1,48 +1,103 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './cards.scss'
 import arrCards from './arr-cards'
+import ItemCard from './../itemCard'
 
-export default class Cards extends Component {
+export default function Cards() {   
 
-    arrSelected = []
-    removeBackImage = (e) => {
-        const item =  e.target
-        
-        if (this.arrSelected.length < 2){
-          item.classList.remove('back-image')
-          item.classList.add('selected')  
-          this.arrSelected.push(item.dataset.name)  
+    const [data, setArrCards ] = useState([]) 
+    const [arrFlipped, setArrFlipped ] = useState([])
+
+    useEffect(() => {        
+        setArrCards(arrCards.sort(() => Math.random() - 0.5 ))        
+    }, [])
+
+    useEffect(() =>{
+        if (arrFlipped.length === 2) {
+            changeCards()           
         }
-        if (this.arrSelected.length === 2){
+    }, [ arrFlipped ])
 
-            if (this.arrSelected[0] === this.arrSelected[1]){
-                console.log(this.arrSelected)
-            }
+
+    const onRemoteBack = ( id ) => {   
+        console.log(arrFlipped)
+        const idx = data.findIndex((el) => el.id === id)
+        const oldItem = data[idx]
+        if (arrFlipped.length < 2 && !oldItem.guessed ) {
+            
+            const newItem = {...oldItem, flipped: true}
+            setArrCards([
+                ...data.slice( 0, idx),
+                newItem,
+                ...data.slice( idx + 1)
+            ]) 
+            if (arrFlipped.length===1 && arrFlipped[0].id === id) return  
+            setArrFlipped([...arrFlipped, data[idx]])  
+        }              
+    }   
+      
+    const changeCards = () => {
+        if (arrFlipped[0].name !== arrFlipped[1].name) {
+            setTimeout( notGuessed, 1000)                                    
+        } else {
+            guessed()            
         }
         
-        
+    }  
+
+    const notGuessed = () => {
+        const idx0 = data.findIndex((el) => el.id === arrFlipped[0].id)
+        const oldItem0 = data[idx0]
+        const newItem0 = {...oldItem0, flipped: false}
+        const idx1 = data.findIndex((el) => el.id === arrFlipped[1].id)
+        const oldItem1 = data[idx1]
+        const newItem1 = {...oldItem1, flipped: false}
+        const newArr0 = [...data.slice( 0, idx0),
+                        newItem0,
+                        ...data.slice( idx0 + 1)]
+        const newArr1 = [...newArr0.slice( 0, idx1),
+                        newItem1,
+                        ...newArr0.slice( idx1 + 1)]
+        setArrCards(newArr1)
+        setArrFlipped([])
     }
 
-
-    render() {
-        let key = 1
-        const itemCards = arrCards.sort(() => Math.random() -0.5 )
-                                .map((el) => {
-                    return (
-                        <div className = 'card back-image'
-                        data-name = {el.name}
-                        key = {key++}
-                        style = {{background: `url(${el.image})`}}
-                        onClick = {this.removeBackImage}>
-                        </div>
-                    )
-            })
-
-        return (
-            <div className = 'cards d-flex justify-content-center'>
-                {itemCards}
-            </div>
-        )
+    const guessed = () => {
+        const idx0 = data.findIndex((el) => el.id === arrFlipped[0].id)
+        const oldItem0 = data[idx0]
+        const newItem0 = {...oldItem0, guessed: true}
+        const idx1 = data.findIndex((el) => el.id === arrFlipped[1].id)
+        const oldItem1 = data[idx1]
+        const newItem1 = {...oldItem1, guessed: true}
+        const newArr0 = [...data.slice( 0, idx0),
+                        newItem0,
+                        ...data.slice( idx0 + 1)]
+        const newArr1 = [...newArr0.slice( 0, idx1),
+                        newItem1,
+                        ...newArr0.slice( idx1 + 1)]
+        setArrCards(newArr1)
+        setArrFlipped([])
     }
+
+    const itemCards = data.map((card) => {
+                return (
+                    <ItemCard 
+                        id = {card.id}
+                        key = {card.id} 
+                        name = {card.name}
+                        image = {card.image} 
+                        flipped = { card.flipped }
+                        guessed = { card.guessed }
+                        onRemoteBack = { onRemoteBack }
+                        />
+                )
+        })
+
+    return (
+        <div className = 'cards d-flex justify-content-center'>
+            {itemCards}
+        </div>
+    )
+    
 }

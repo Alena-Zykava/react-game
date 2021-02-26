@@ -1,0 +1,29 @@
+.card {
+    height: 200px;
+    width: 150px;
+    margin: 15px;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 2px solid rgb(0, 0, 0) ;
+    box-shadow: 1px 4px 12px rgb(107, 107, 107);
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    img {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.back-image {
+    background-image: url('./../cards/image/brawl-logo.jpg')!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    background-position: 50%!important;
+}
+
+.guessed {
+    transform: scale(0.95);
+    opacity: 0.6;
+    cursor: default;
+}

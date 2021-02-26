@@ -1,21 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Title from './../title'
 import Cards from './../cards'
 import Footer from './../footer'
 
+//import arrCards from './../cards/arr-cards'
+
 import './app.scss';
 
 
-class App extends Component {
-    render() {
-      return (
-          <div className = 'app'>
-            <Title />
-            <Cards /> 
-            <Footer />
-          </div>          
-      ) 
-    }     
+const App = () => {
+    
+  
+
+  return (
+      <div className = 'app'>
+        <Title />
+        <Cards           
+          
+          //onRemoteBack = {onRemoteBack}
+          /> 
+        <Footer />
+      </div>          
+  ) 
+        
 }
 
 export default App

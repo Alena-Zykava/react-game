@@ -9,62 +9,86 @@ const arrCards = [
     {
         name: 'crow',
         image: crow,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 0
     },
     {
         name: 'mortis',
         image: mortis,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 1
     },
     {
         name: 'karl',
         image: karl,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 2
     },
     {
         name: 'mrP',
         image: mrP,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 3
     },
     {
         name: 'piper',
         image: piper,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 4
     },    
     {
         name: 'shelly',
         image: shelly,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 5
     },
     {
         name: 'crow',
         image: crow,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 6
     },
     {
         name: 'mortis',
         image: mortis,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 7
     },
     {
         name: 'karl',
         image: karl,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 8
     },
     {
         name: 'mrP',
         image: mrP,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 9
     },
     {
         name: 'piper',
         image: piper,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 10
     },    
     {
         name: 'shelly',
         image: shelly,  
-        flipped: false
+        flipped: false,
+        guessed: false,
+        id: 11
     }
 ]
 
