@@ -6,7 +6,7 @@ const BtnStart = ({onStartGame}) => {
     return (
         <button className = 'btn btn-primary btn-start'
                 onClick = {() => {onStartGame()} } >
-                Start game
+                New game
         </button>
     )
 }
