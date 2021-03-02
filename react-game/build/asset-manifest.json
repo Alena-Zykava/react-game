@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fb6eea1c.chunk.css",
+    "main.js": "/static/js/main.d6fd1de1.chunk.js",
+    "main.js.map": "/static/js/main.d6fd1de1.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.3f588e69.js",
+    "runtime-main.js.map": "/static/js/runtime-main.3f588e69.js.map",
+    "static/js/2.fdd8a65a.chunk.js": "/static/js/2.fdd8a65a.chunk.js",
+    "static/js/2.fdd8a65a.chunk.js.map": "/static/js/2.fdd8a65a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.fb6eea1c.chunk.css.map": "/static/css/main.fb6eea1c.chunk.css.map",
+    "static/js/2.fdd8a65a.chunk.js.LICENSE.txt": "/static/js/2.fdd8a65a.chunk.js.LICENSE.txt",
+    "static/media/app.scss": "/static/media/background-yellow.e8a10bd9.png",
+    "static/media/itemCard.scss": "/static/media/brawl-logo.b4843dd7.jpg",
+    "static/media/crow.4eaad05a.png": "/static/media/crow.4eaad05a.png",
+    "static/media/karl.c837bbcb.png": "/static/media/karl.c837bbcb.png",
+    "static/media/mortis.5f6c2d9b.png": "/static/media/mortis.5f6c2d9b.png",
+    "static/media/mr-p.06a1b2f1.png": "/static/media/mr-p.06a1b2f1.png",
+    "static/media/piper.521eb7e0.png": "/static/media/piper.521eb7e0.png",
+    "static/media/rs_school_js.ad178c0d.svg": "/static/media/rs_school_js.ad178c0d.svg",
+    "static/media/shelly.314d5794.png": "/static/media/shelly.314d5794.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3f588e69.js",
+    "static/js/2.fdd8a65a.chunk.js",
+    "static/css/main.fb6eea1c.chunk.css",
+    "static/js/main.d6fd1de1.chunk.js"
+  ]
+}
