@@ -11,14 +11,28 @@ import './app.scss';
 
 
 const App = () => {
+  const initData = arrCards.sort(() => Math.random() - 0.5 )
+  const saveGame = () => {
+      const saveData = JSON.parse(localStorage.getItem('saveData')) 
+      if (saveData) {
+        return saveData
+      } else {
+        return initData
+      }      
+    }   
+  
+  const oldGameState = () => {
+    const gameState = localStorage.getItem('gameState')
+    if (gameState) {
+      return gameState
+    } else {
+      return 'greeting'
+    }
+  }
 
-  const [data, setArrCards ] = useState([]) 
+  const [data, setData ] = useState(saveGame()) 
   const [arrFlipped, setArrFlipped ] = useState([])
-  const [ gameState, setGameState ] = useState('greeting')
-
-  useEffect(() => {        
-    initData()        
-  }, [])
+  const [ gameState, setGameState ] = useState(oldGameState())
   
   useEffect(() =>{
     if (arrFlipped.length === 2) {
@@ -27,12 +41,15 @@ const App = () => {
     if (dataFlipped.length === 12){
       setGameState('win')
       gameField()  
-      initData()                    
+      setData(initData)                    
     }
-
   }, [ arrFlipped ])
 
-  const initData = () => setArrCards(arrCards.sort(() => Math.random() - 0.5 ))
+  useEffect(() => {
+    const serialSaveData = JSON.stringify(data)
+    localStorage.setItem('saveData', serialSaveData) 
+    localStorage.setItem('gameState', gameState)
+  }, [data, gameState])  
 
   const dataFlipped = data.filter((el) => {
     return el.flipped
@@ -41,7 +58,7 @@ const App = () => {
   const onStartGame = () => {
     setGameState('game') 
     gameField()  
-    initData()
+    setData(initData)
     setArrFlipped([])                  
   }
 
@@ -69,14 +86,14 @@ const App = () => {
     if (arrFlipped.length < 2 && !oldItem.guessed ) {
         
         const newItem = {...oldItem, flipped: true}
-        setArrCards([
+        setData([
             ...data.slice( 0, idx),
             newItem,
             ...data.slice( idx + 1)
         ]) 
         if (arrFlipped.length===1 && arrFlipped[0].id === id) return  
         setArrFlipped([...arrFlipped, data[idx]])  
-    }              
+    } 
   }   
   
   const changeCards = () => {
@@ -101,7 +118,7 @@ const App = () => {
       const newArr1 = [...newArr0.slice( 0, idx1),
                       newItem1,
                       ...newArr0.slice( idx1 + 1)]
-      setArrCards(newArr1)
+      setData(newArr1)
       setArrFlipped([])
   }
 
@@ -118,7 +135,7 @@ const App = () => {
       const newArr1 = [...newArr0.slice( 0, idx1),
                       newItem1,
                       ...newArr0.slice( idx1 + 1)]
-      setArrCards(newArr1)
+      setData(newArr1)
       setArrFlipped([])
   }
 
