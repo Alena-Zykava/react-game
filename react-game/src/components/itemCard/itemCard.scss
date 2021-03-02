@@ -9,9 +9,23 @@
     background-size: contain !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
+    transition: background 0.5s ease;
     img {
         height: 100%;
         width: 100%;
+    }
+    &:hover {
+        transform: scale(1.05);
+        box-shadow: 1px 4px 12px rgb(107, 107, 107);
+    }
+    &.guessed {
+        transform: scale(0.95);
+        opacity: 0.6;
+        cursor: default;
+        &:hover {
+            transform: scale(1) !important;
+            box-shadow: 1px 4px 12px rgb(107, 107, 107);
+        }
     }
 }
 
@@ -22,8 +36,3 @@
     background-position: 50%!important;
 }
 
-.guessed {
-    transform: scale(0.95);
-    opacity: 0.6;
-    cursor: default;
-}
