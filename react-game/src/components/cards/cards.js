@@ -3,11 +3,14 @@ import React, { useState, useEffect } from 'react'
 import './cards.scss'
 import arrCards from './arr-cards'
 import ItemCard from './../itemCard'
+import Win from './../win'
+
 
 export default function Cards() {   
 
     const [data, setArrCards ] = useState([]) 
     const [arrFlipped, setArrFlipped ] = useState([])
+    const [ isWin, setIsWin ] = useState(false)
 
     useEffect(() => {        
         setArrCards(arrCards.sort(() => Math.random() - 0.5 ))        
@@ -15,13 +18,23 @@ export default function Cards() {
 
     useEffect(() =>{
         if (arrFlipped.length === 2) {
-            changeCards()           
+            changeCards()                       
         }
+        if (dataFlipped.length === 12){
+            setIsWin(true)                       
+        }
+
     }, [ arrFlipped ])
 
+    
+    const dataFlipped = data.filter((el) => {
+        return el.flipped
+    })
+    
+    
 
-    const onRemoteBack = ( id ) => {   
-        console.log(arrFlipped)
+
+    const onRemoteBack = ( id ) => {
         const idx = data.findIndex((el) => el.id === id)
         const oldItem = data[idx]
         if (arrFlipped.length < 2 && !oldItem.guessed ) {
@@ -81,22 +94,29 @@ export default function Cards() {
     }
 
     const itemCards = data.map((card) => {
-                return (
-                    <ItemCard 
-                        id = {card.id}
-                        key = {card.id} 
-                        name = {card.name}
-                        image = {card.image} 
-                        flipped = { card.flipped }
-                        guessed = { card.guessed }
-                        onRemoteBack = { onRemoteBack }
-                        />
-                )
-        })
+        return (
+            <ItemCard 
+                id = {card.id}
+                key = {card.id} 
+                name = {card.name}
+                image = {card.image} 
+                flipped = { card.flipped }
+                guessed = { card.guessed }
+                onRemoteBack = { onRemoteBack }                
+                />
+        )
+    })
+    
+    const valueField = () => {
+        if (isWin) {
+            return <Win /> 
+        } else {
+            return itemCards}
+    }
 
     return (
-        <div className = 'cards d-flex justify-content-center'>
-            {itemCards}
+        <div className = 'cards d-flex justify-content-center align-items-center'>
+            {valueField()}
         </div>
     )
     

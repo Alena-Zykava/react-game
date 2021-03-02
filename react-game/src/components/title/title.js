@@ -1,14 +1,19 @@
-import React, {Component} from 'react'
+import React from 'react'
 
 import './title.scss'
 
-export default class Title extends Component {
+import BtnStart from './../btn-start'
 
-    render() {
-        return (
-        <div className= 'title'>
-            <h1>Memory game</h1>
-        </div>
-        )
-    }
+const Title =({onStartGame}) => {
+    
+    return (
+    <div className= 'title d-flex justify-content-around'>
+        <h1>Memory game</h1>
+        <BtnStart 
+            onStartGame = {() => {onStartGame()} }/>
+    </div>
+    )
+    
 }
+
+export default Title

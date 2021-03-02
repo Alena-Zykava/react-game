@@ -1,5 +1,18 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+    color: white;
+}
 body{
-    background-color: rgb(180, 248, 211);
+    background-image: url('./../cards/image/background-yellow.png');
     max-width: 1200px;
     margin: 0 auto;
+    
+}
+
+.wrapper {
+    width: 100%;
+    height: calc(100vh - 115px)
 }
