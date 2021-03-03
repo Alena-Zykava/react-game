@@ -4,10 +4,13 @@ import './btn-start.scss'
 
 const BtnStart = ({onStartGame}) => {
     return (
-        <button className = 'btn btn-primary btn-start'
+        <div className = 'col-sm-4 text-center'>
+           <button className = 'btn btn-primary btn-start'
                 onClick = {() => {onStartGame()} } >
-                New game
-        </button>
+                Новая игра
+            </button>                   
+        </div>
+        
     )
 }
 

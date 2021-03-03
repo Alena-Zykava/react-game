@@ -5,7 +5,7 @@ import logo from './rs_school_js.svg'
 
 const Footer = () => {
     return (
-        <div className = 'footer d-flex justify-content-between'>
+        <div className = 'footer d-flex justify-content-around'>
             <a href = 'https://github.com/Alena-Zykava'> Alena Zykava </a>
             <span>2021</span>
             <a href = 'https://rs.school/js/'>

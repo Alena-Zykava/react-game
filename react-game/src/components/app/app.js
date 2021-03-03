@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useSound from 'use-sound'
 
 import Title from './../title'
 import Cards from './../cards'
@@ -7,8 +8,10 @@ import Greeting from './../greeting'
 import Win from './../win'
 import arrCards from './../cards/arr-cards'
 
-import './app.scss';
 
+import soundTouch from './../sounds/sound.mp3'
+
+import './app.scss';
 
 const App = () => {
   const initData = arrCards.sort(() => Math.random() - 0.5 )
@@ -30,36 +33,57 @@ const App = () => {
     }
   }
 
-  const [data, setData ] = useState(saveGame()) 
-  const [arrFlipped, setArrFlipped ] = useState([])
+  const saveCountMatch = () => {
+    const returnCountMatch = localStorage.getItem('saveCountMatch')
+    if (returnCountMatch) {
+      return returnCountMatch
+    } else {
+      return 0
+    }
+  }
+
+  const [ data, setData ] = useState(saveGame()) 
+  const [ arrFlipped, setArrFlipped ] = useState([])
   const [ gameState, setGameState ] = useState(oldGameState())
+  const [ countMatch, setCountMatch ] = useState(saveCountMatch())
+  const [ musicTouch, setMusicTouch ] = useState(false)
+  const [volume, setVolume] = useState(0.3)
+
+  const [ play ] = useSound(soundTouch, {volume})
   
   useEffect(() =>{
     if (arrFlipped.length === 2) {
         changeCards()                       
-    }
+    }    
+  }, [ arrFlipped])
+
+  const dataFlipped = data.filter((el) => {
+      return el.flipped
+    })
+
+  useEffect(() => {
     if (dataFlipped.length === 12){
       setGameState('win')
-      gameField()  
-      setData(initData)                    
+      gameField()
+      setCountMatch(+ countMatch + 1)                         
     }
-  }, [ arrFlipped ])
+  }, [dataFlipped.length ])
+
 
   useEffect(() => {
     const serialSaveData = JSON.stringify(data)
     localStorage.setItem('saveData', serialSaveData) 
     localStorage.setItem('gameState', gameState)
-  }, [data, gameState])  
+    localStorage.setItem('saveCountMatch', countMatch)
+  }, [data, gameState, countMatch])  
 
-  const dataFlipped = data.filter((el) => {
-    return el.flipped
-  })
+  
 
   const onStartGame = () => {
     setGameState('game') 
     gameField()  
     setData(initData)
-    setArrFlipped([])                  
+    setArrFlipped([])                      
   }
 
   const gameField = () => {
@@ -83,8 +107,7 @@ const App = () => {
   const onRemoteBack = ( id ) => {
     const idx = data.findIndex((el) => el.id === id)
     const oldItem = data[idx]
-    if (arrFlipped.length < 2 && !oldItem.guessed ) {
-        
+    if (arrFlipped.length < 2 && !oldItem.guessed ) {        
         const newItem = {...oldItem, flipped: true}
         setData([
             ...data.slice( 0, idx),
@@ -93,7 +116,10 @@ const App = () => {
         ]) 
         if (arrFlipped.length===1 && arrFlipped[0].id === id) return  
         setArrFlipped([...arrFlipped, data[idx]])  
-    } 
+        if (musicTouch) {
+          return play()   
+        }
+    }      
   }   
   
   const changeCards = () => {
@@ -139,13 +165,29 @@ const App = () => {
       setArrFlipped([])
   }
 
+  const playSoundTouch = () =>{
+    setMusicTouch(!musicTouch)
+  }  
 
-  
+  const plusVolume = () =>{
+    setVolume(volume + 0.1)
+  }
+
+  const minusVolume = () =>{
+      setVolume(volume - 0.1)
+  }
 
   return (
       <div className = 'app'>
         <Title 
-          onStartGame = { onStartGame }/>
+          onStartGame = { onStartGame }
+          count = {dataFlipped.length} 
+          countMatch = {countMatch} 
+          musicTouch = {musicTouch}
+          playSoundTouch = {playSoundTouch}
+          plusVolume = {plusVolume}
+          minusVolume = {minusVolume}
+          />
           <div className = 'wrapper'>
            {gameField()}  
           </div>  
