@@ -20,6 +20,7 @@ body{
 
 button:active, button:focus {
     outline: none;
+    box-shadow: none !important;
   }
   button::-moz-focus-inner {
     border: 0;
