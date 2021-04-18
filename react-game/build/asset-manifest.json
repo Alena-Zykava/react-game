@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.b6dd5317.chunk.css",
+    "main.js": "/static/js/main.c536a4cf.chunk.js",
+    "main.js.map": "/static/js/main.c536a4cf.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.60725bc8.js",
+    "runtime-main.js.map": "/static/js/runtime-main.60725bc8.js.map",
+    "static/js/2.b8393b03.chunk.js": "/static/js/2.b8393b03.chunk.js",
+    "static/js/2.b8393b03.chunk.js.map": "/static/js/2.b8393b03.chunk.js.map",
+    "static/js/3.80a6fe10.chunk.js": "/static/js/3.80a6fe10.chunk.js",
+    "static/js/3.80a6fe10.chunk.js.map": "/static/js/3.80a6fe10.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.b6dd5317.chunk.css.map": "/static/css/main.b6dd5317.chunk.css.map",
+    "static/js/2.b8393b03.chunk.js.LICENSE.txt": "/static/js/2.b8393b03.chunk.js.LICENSE.txt",
+    "static/js/3.80a6fe10.chunk.js.LICENSE.txt": "/static/js/3.80a6fe10.chunk.js.LICENSE.txt",
+    "static/media/app.scss": "/static/media/background-yellow.7b08904f.png",
+    "static/media/itemCard.scss": "/static/media/brawl-logo.2525771e.jpg",
+    "static/media/coins.260eed48.png": "/static/media/coins.260eed48.png",
+    "static/media/crow.fbc75297.png": "/static/media/crow.fbc75297.png",
+    "static/media/karl.e5e44399.png": "/static/media/karl.e5e44399.png",
+    "static/media/main-menu-2.0042de2a.mp3": "/static/media/main-menu-2.0042de2a.mp3",
+    "static/media/mortis.fc27413f.png": "/static/media/mortis.fc27413f.png",
+    "static/media/mr-p.e2b07feb.png": "/static/media/mr-p.e2b07feb.png",
+    "static/media/piper.5674cad2.png": "/static/media/piper.5674cad2.png",
+    "static/media/rs_school_js.ad178c0d.svg": "/static/media/rs_school_js.ad178c0d.svg",
+    "static/media/shelly.44efc73d.png": "/static/media/shelly.44efc73d.png",
+    "static/media/sound.d80746ad.mp3": "/static/media/sound.d80746ad.mp3"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.60725bc8.js",
+    "static/js/2.b8393b03.chunk.js",
+    "static/css/main.b6dd5317.chunk.css",
+    "static/js/main.c536a4cf.chunk.js"
+  ]
+}

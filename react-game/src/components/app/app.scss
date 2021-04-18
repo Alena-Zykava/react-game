@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-shadow: rgb(71, 71, 71) 1px 1px 1px, rgb(71, 71, 71) -1px -1px 1px, rgb(71, 71, 71) -1px 1px 1px, rgb(71, 71, 71) 1px -1px 1px;
+    color: white;
+}
+body{
+    background-image: url('./../cards/image/background-yellow.png');
+    background-size: cover;
+    background-position: center;
+    max-width: 1200px;
+    margin: 0 auto;    
+}
+
+.wrapper {
+    width: 100%;
+    min-height: calc(100vh - 190px)
+}
+
+button:active, button:focus {
+    outline: none;
+    box-shadow: none !important;
+  }
+  button::-moz-focus-inner {
+    border: 0;
+  }
